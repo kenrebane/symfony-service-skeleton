@@ -13,5 +13,6 @@ framework:
 
     #esi: true
     #fragments: true
+    #error_controller: App\Controller\ExceptionController::process
     php_errors:
         log: true

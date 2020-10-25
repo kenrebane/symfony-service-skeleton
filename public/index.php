@@ -1,5 +1,6 @@
 <?php
 
+use App\Controller\ErrorController;
 use App\Kernel;
 use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\ErrorHandler\Debug;
@@ -23,8 +24,26 @@ if ($trustedHosts = $_SERVER['TRUSTED_HOSTS'] ?? false) {
     Request::setTrustedHosts([$trustedHosts]);
 }
 
+/*
 $kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
 $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
+*/
+
+
+$kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
+$request = Request::createFromGlobals();
+
+try
+{
+  $response = $kernel->handle($request);
+} catch (\Error $error)
+{
+  $response = (new ErrorController)->setError($error)->process()->getResponse();
+}
+
+$response->send();
+$kernel->terminate($request, $response);
+
