@@ -2,10 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc4fae1b-8c36-4e67-a2c4-b0b01657c64c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Enum/ExceptionDetail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Enum/ExceptionName.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Exception/BadRequestException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Exception/ExceptionInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Exception/InternalErrorException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Exception/RequestException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Exception/RequestValidationException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Responder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Response/ResponseInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Response/TestResponse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/framework.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/framework.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ErrorController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ExceptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ExceptionController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/TestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TestController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EventSubscriber/ExceptionSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventSubscriber/ExceptionSubscriber.php" afterDir="false" />
     </list>
@@ -99,13 +111,14 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.intentionPowerPack" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -122,34 +135,49 @@
       <option name="presentableId" value="Default" />
       <updated>1603642715116</updated>
       <workItem from="1603642716651" duration="6312000" />
-      <workItem from="1603649042436" duration="4902000" />
+      <workItem from="1603649042436" duration="33948000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="749" y="234" width="412" height="645" key="#com.intellij.ide.util.MemberChooser" timestamp="1603642878767">
+    <state x="749" y="234" width="412" height="680" key="#com.intellij.ide.util.MemberChooser" timestamp="1603684099234">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="749" y="234" width="412" height="645" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053/1920.0.1080.1920@0.27.1920.1053" timestamp="1603642878767" />
-    <state x="693" y="311" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603654032422">
+    <state x="749" y="234" width="412" height="680" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053/1920.0.1080.1920@0.27.1920.1053" timestamp="1603684099234" />
+    <state x="735" y="365" width="431" height="391" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1603671886563">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="693" y="311" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1920.1053/1920.0.1080.1920@0.27.1920.1053" timestamp="1603654032422" />
+    <state x="735" y="365" width="431" height="391" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.27.1920.1053/1920.0.1080.1920@0.27.1920.1053" timestamp="1603671886563" />
+    <state x="693" y="311" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603682059010">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="693" y="311" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1920.1053/1920.0.1080.1920@0.27.1920.1053" timestamp="1603682059010" />
     <state x="696" y="395" width="518" height="324" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1603648995230">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="696" y="395" width="518" height="324" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.27.1920.1053/1920.0.1080.1920@0.27.1920.1053" timestamp="1603648995230" />
-    <state x="646" y="273" width="617" height="568" key="NewPhpClassDialog" timestamp="1603648647486">
+    <state x="646" y="273" width="617" height="568" key="NewPhpClassDialog" timestamp="1603684078752">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="646" y="273" width="617" height="568" key="NewPhpClassDialog/0.27.1920.1053/1920.0.1080.1920@0.27.1920.1053" timestamp="1603648647486" />
-    <state x="183" y="161" width="1616" height="737" key="SettingsEditor" timestamp="1603647315580">
+    <state x="646" y="273" width="617" height="568" key="NewPhpClassDialog/0.27.1920.1053/1920.0.1080.1920@0.27.1920.1053" timestamp="1603684078752" />
+    <state x="183" y="161" width="1616" height="737" key="SettingsEditor" timestamp="1603663206452">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="183" y="161" width="1616" height="737" key="SettingsEditor/0.27.1920.1053/1920.0.1080.1920@0.27.1920.1053" timestamp="1603647315580" />
+    <state x="183" y="161" width="1616" height="737" key="SettingsEditor/0.27.1920.1053/1920.0.1080.1920@0.27.1920.1053" timestamp="1603663206452" />
+    <state x="1920" y="0" width="1080" height="1009" maximized="true" key="dock-window-1" timestamp="1603664790793">
+      <screen x="1920" y="0" width="1080" height="1920" />
+    </state>
+    <state x="1920" y="0" width="1080" height="1009" maximized="true" key="dock-window-1/0.27.1920.1053/1920.0.1080.1920@0.27.1920.1053" timestamp="1603664790793" />
+    <state x="1920" y="0" width="1080" height="1009" maximized="true" key="dock-window-2" timestamp="1603680432808">
+      <screen x="1920" y="0" width="1080" height="1920" />
+    </state>
+    <state x="1920" y="0" width="1080" height="1009" maximized="true" key="dock-window-2/0.27.1920.1053/1920.0.1080.1920@0.27.1920.1053" timestamp="1603680432808" />
     <state x="651" y="292" width="618" height="522" key="find.popup" timestamp="1603652404786">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>

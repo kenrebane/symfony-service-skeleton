@@ -2,39 +2,78 @@
 
 namespace App\Controller;
 
+use App\Enum\ExceptionName;
+use App\Exception\InternalErrorException;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 
 class ExceptionController extends AbstractController
 {
-  private ExceptionEvent $event;
-  private Response $response;
+  private LoggerInterface $logger;
+  private \Throwable $throwable;
 
-  public function setEvent(ExceptionEvent $event) : self
+  public function setLogger(LoggerInterface $logger)
   {
-    $this->event = $event;
+    $this->logger = $logger;
+  }
+
+  public function setThrowable(\Throwable $throwable) : self
+  {
+    $this->throwable = $throwable;
 
     return $this;
   }
 
   public function process() : self
   {
-    $this->response = new JsonResponse([
-      'status' => 500,
-      'type' => 'Implementation error',
-      'title' => 'Exception handling',
-      'detail' => 'Exception handling not implemented, set up error handling at ExceptionController',
-    ]);
+    $this->log();
+
+    if ($this->getThrowableParentName($this->throwable) != ExceptionName::REQUEST_EXCEPTION)
+    {
+      $this->notify();
+    }
 
     return $this;
   }
 
-  public function getResponse() : Response
+  public function getResponse() : JsonResponse
   {
-    return $this->response;
+    /*
+    $this->response = new JsonResponse([
+      'status' => 500,
+      'type' => 'Implementation error',
+      'title' => 'ExceptionName handling',
+      'detail' => 'ExceptionName handling not implemented, set up error handling at ExceptionController',
+    ]);
+    */
+    return new JsonResponse($this->throwable);
+  }
+
+  private function getThrowableParentName(\Throwable $throwable) : string
+  {
+    try
+    {
+      return (new \ReflectionClass($throwable))->getParentClass()->getShortName();
+    }
+    catch (\Error $error)
+    {
+      $exception = new InternalErrorException();
+      $exception->setError($error);
+
+      return $this->getThrowableParentName($exception);
+    }
+  }
+
+  private function log()
+  {
+    dump('log');
+  }
+
+  private function notify()
+  {
+    dump('notification');
   }
 
 }
